@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProductReviewManagement
 {
-    internal class Program
+    public class Program
     {
-        static void Main(string[] args)
+       static void Main(string[] args)
         {   //UC1
             // add elements of the custom classes using the collection-initializer syntax.
             // The following adds objects of the ProductReview class in the List<ProductReview>.
@@ -43,12 +43,16 @@ namespace ProductReviewManagement
                 new Product(){ProductID=25,Userid=25,rating=1,Review="bad",Islike=true},
 
             };
-            foreach (var product in productReviewList)
-            {
-                Console.WriteLine("--------------------------------");
-                Console.WriteLine(product.ProductID+"|"+product.Userid+"|"+product.rating+"|"+product.Review+"|"+product.Islike);
-                
-            }
+            //foreach (var product in productReviewList)
+            //{
+            //    Console.WriteLine("--------------------------------");
+            //    Console.WriteLine(product.ProductID+"|"+product.Userid+"|"+product.rating+"|"+product.Review+"|"+product.Islike);
+
+            //}
+            Console.WriteLine("UC2-Retrieving Top 3 records based on rating: \n");
+            Management objManagement = new Management();
+            objManagement.Top3Records(productReviewList);
+            Console.WriteLine("\n");
             Console.ReadLine();
         }
     }
