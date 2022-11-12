@@ -10,16 +10,12 @@ namespace ProductReviewManagement
     {
         public void Top3Records(List<Product> productreview)
         {
-            // Query for Retrieve top 3 records from the list who’s rating is high using LINQ
-            var productdata = (from product in productreview
-                               where (product.ProductID == 1 || product.ProductID == 4 || product.ProductID == 9)
-                              && product.rating > 3
-                               select product);
-            // If you need the results to be in a DataTable
+           //count of each product id
+            var productdata = productreview.GroupBy(x => x.ProductID).Select(x => new { ProductID = x.Key, Count = x.Count() });
+            
             foreach (var product in productdata)
             {
-                Console.WriteLine("ProductID:" + product.ProductID + " " + "UserID: " + product.Userid
-                    + " " + "Rating: " + product.rating + " " + "Review: " + product.Review + " " + "isLike: " + product.Islike);
+                Console.WriteLine("ProductID:" + product.ProductID +"count : " + product.Count);
                 Console.WriteLine("-------------------------------------------------------------");
             }
         }
