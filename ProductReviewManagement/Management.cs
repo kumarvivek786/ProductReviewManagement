@@ -10,11 +10,13 @@ namespace ProductReviewManagement
     {
         public void Top3Records(List<Product> productreview)
         {
-           //show only product id and review
-            var productdata = productreview.Select(x => new { ProductID = x.ProductID, Review = x.Review });
+           //skip top 5 record
+            var productdata = (from product in productreview
+                               select product).Skip(5);
             foreach (var product in productdata)
             {
-                Console.WriteLine("ProductID:" + product.ProductID +"  Review : " + product.Review);
+                Console.WriteLine("ProductID:" + product.ProductID + " " + "UserID: " + product.Userid
+                    + " " + "Rating: " + product.rating + " " + "Review: " + product.Review + " " + "isLike: " + product.Islike);
                 Console.WriteLine("-------------------------------------------------------------");
             }
         }
