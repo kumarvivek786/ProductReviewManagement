@@ -11,12 +11,11 @@ namespace ProductReviewManagement
         public void Top3Records(List<Product> productreview)
         {
            //skip top 5 record
-            var productdata = (from product in productreview
-                               select product).Skip(5);
+            var productdata = productreview.Select(x => new { x.ProductID, x.Review });
+
             foreach (var product in productdata)
             {
-                Console.WriteLine("ProductID:" + product.ProductID + " " + "UserID: " + product.Userid
-                    + " " + "Rating: " + product.rating + " " + "Review: " + product.Review + " " + "isLike: " + product.Islike);
+                Console.WriteLine("ProductID:" + product.ProductID + "  Review : " + product.Review);
                 Console.WriteLine("-------------------------------------------------------------");
             }
         }

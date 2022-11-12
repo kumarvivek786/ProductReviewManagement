@@ -49,7 +49,7 @@ namespace ProductReviewManagement
             //    Console.WriteLine(product.ProductID+"|"+product.Userid+"|"+product.rating+"|"+product.Review+"|"+product.Islike);
 
             //}
-            Console.WriteLine("Count of each productId: \n");
+            Console.WriteLine("Product id and Review: \n");
             Management objManagement = new Management();
             objManagement.Top3Records(productReviewList);
             Console.WriteLine("\n");
